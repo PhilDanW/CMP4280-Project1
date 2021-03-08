@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     //define variables to help open file
     FILE *fp;
     char *fileName;
-    char inputLines[1000];
+    char input[1000];
     int line = 1;
     
     //create the FSA table that will store the states and tokens
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
         if (fp == NULL) {
-            perror("Error: Could not open file %s\n", fileName);
+            perror("Error: Could not open file\n");
             return 0;
         }
         else {
