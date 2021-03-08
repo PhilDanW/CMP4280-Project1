@@ -5,6 +5,13 @@
 * tokens in the token struct                               *
 ***********************************************************/
 
+#include <stdio.h>
+#include "token.h"
+#include "scanner.h"
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
 void mainDriver(char *array, int line) {
   int i;
   int j;
