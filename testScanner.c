@@ -2,7 +2,7 @@
 #include "scanner.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "testscanner.h"
+#include "testScanner.h"
 
 //test scanner
 void testScanner(){
