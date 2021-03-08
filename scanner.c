@@ -114,8 +114,8 @@ void mainDriver(char *array, int line) {
 						j--;
 					}	 
 
-					if(!isspace(input[i])){
-						tokens[z].instance[j] = input[i];
+					if(!isspace(array[i])){
+						tokens[z].instance[j] = array[i];
 						j++;
 					} 
       }
