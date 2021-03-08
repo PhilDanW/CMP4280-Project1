@@ -29,7 +29,7 @@ void mainDriver(char *array, int line) {
 					isError = 1;
       }
       else {
-          state = myTable[state][nextChar];
+          state = table[state][nextChar];
         
           if(state == -1) {
               sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
@@ -324,79 +324,79 @@ void fsaTable() {
     int k = 1003;
   
     //first state
-    myTable[0][0] = 1;
-    myTable[0][1] = 2;
-    myTable[0][2] = 3;
-    myTable[0][3] = 4;
-    myTable[0][4] = 0;
-    myTable[0][5] = 1005;
-    myTable[0][6] = -1;
-    myTable[0][7] = 5;
-    myTable[0][8] = 6;
-    myTable[0][9] = 7;
-    myTable[0][10] = 8;
-    myTable[0][11] = 9;
-    myTable[0][12] = 10;
-    myTable[0][13] = 11;
-    myTable[0][14] = 12;
-    myTable[0][15] = 13;
-    myTable[0][16] = 14;
-    myTable[0][17] = 15;
-    myTable[0][18] = 16;
-    myTable[0][19] = 17;
-    myTable[0][20] = 18;
-    myTable[0][21] = 19;
-    myTable[0][22] = 20;
+    table[0][0] = 1;
+    table[0][1] = 2;
+    table[0][2] = 3;
+    table[0][3] = 4;
+    table[0][4] = 0;
+    table[0][5] = 1005;
+    table[0][6] = -1;
+    table[0][7] = 5;
+    table[0][8] = 6;
+    table[0][9] = 7;
+    table[0][10] = 8;
+    table[0][11] = 9;
+    table[0][12] = 10;
+    table[0][13] = 11;
+    table[0][14] = 12;
+    table[0][15] = 13;
+    table[0][16] = 14;
+    table[0][17] = 15;
+    table[0][18] = 16;
+    table[0][19] = 17;
+    table[0][20] = 18;
+    table[0][21] = 19;
+    table[0][22] = 20;
   
     //identifier states
-    myTable[1][0] = 1;
-    myTable[1][1] = 1001;
-    myTable[1][2] = 1001;
-    myTable[1][3] = 1001;
-    myTable[1][4] = 1001;
-    myTable[1][5] = 1001;
-    myTable[1][6] = 1;
-    myTable[1][7] = 1001;
-    myTable[1][8] = 1001;
-    myTable[1][9] = 1001;
-    myTable[1][10] = 1001;
-    myTable[1][11] = 1001;
-    myTable[1][12] = 1001;
-    myTable[1][13] = 1001;
-    myTable[1][14] = 1001;
-    myTable[1][15] = 1001;
-    myTable[1][16] = 1001;
-    myTable[1][17] = 1001;
-    myTable[1][18] = 1001;
-    myTable[1][19] = 1001;
-    myTable[1][20] = 1001;
-    myTable[1][21] = 1001;
-    myTable[1][22] = 1001;
+    table[1][0] = 1;
+    table[1][1] = 1001;
+    table[1][2] = 1001;
+    table[1][3] = 1001;
+    table[1][4] = 1001;
+    table[1][5] = 1001;
+    table[1][6] = 1;
+    table[1][7] = 1001;
+    table[1][8] = 1001;
+    table[1][9] = 1001;
+    table[1][10] = 1001;
+    table[1][11] = 1001;
+    table[1][12] = 1001;
+    table[1][13] = 1001;
+    table[1][14] = 1001;
+    table[1][15] = 1001;
+    table[1][16] = 1001;
+    table[1][17] = 1001;
+    table[1][18] = 1001;
+    table[1][19] = 1001;
+    table[1][20] = 1001;
+    table[1][21] = 1001;
+    table[1][22] = 1001;
     
     //integer states
-    myTable[2][0] = 1002;
-    myTable[2][1] = 2;
-    myTable[2][2] = 1002;
-    myTable[2][3] = 1002;
-    myTable[2][4] = 1002;
-    myTable[2][5] = 1002;
-    myTable[2][6] = 1002;
-    myTable[2][7] = 1002;
-    myTable[2][8] = 1002;
-    myTable[2][9] = 1002;
-    myTable[2][10] = 1002;
-    myTable[2][11] = 1002;
-    myTable[2][12] = 1002;
-    myTable[2][13] = 1002;
-    myTable[2][14] = 1002;
-    myTable[2][15] = 1002;
-    myTable[2][16] = 1002;
-    myTable[2][17] = 1002;
-    myTable[2][18] = 1002;
-    myTable[2][19] = 1002;
-    myTable[2][20] = 1002;
-    myTable[2][21] = 1002;
-    myTable[2][22] = 1002;
+    table[2][0] = 1002;
+    table[2][1] = 2;
+    table[2][2] = 1002;
+    table[2][3] = 1002;
+    table[2][4] = 1002;
+    table[2][5] = 1002;
+    table[2][6] = 1002;
+    table[2][7] = 1002;
+    table[2][8] = 1002;
+    table[2][9] = 1002;
+    table[2][10] = 1002;
+    table[2][11] = 1002;
+    table[2][12] = 1002;
+    table[2][13] = 1002;
+    table[2][14] = 1002;
+    table[2][15] = 1002;
+    table[2][16] = 1002;
+    table[2][17] = 1002;
+    table[2][18] = 1002;
+    table[2][19] = 1002;
+    table[2][20] = 1002;
+    table[2][21] = 1002;
+    table[2][22] = 1002;
      
     //loop to assign value to all other states
     for(i = 3; i < 21; i++) {
