@@ -19,7 +19,7 @@ int errorIndex = 0;
 int main(int argc, char *argv[])
 {
     //define variables to help open file
-    FILE *fp;
+    FILE *fp = NULL;
     char *fileName;
     char input[1000];
     int line = 1;
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     //try to open the file
-    else if (argc == 2) {
+    else {
         fileName = argv[1];
         printf("Opening file %s\n", fileName);
         fp = fopen(fileName, "r");
