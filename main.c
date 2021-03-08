@@ -13,11 +13,13 @@ int main(int argc, char *argv[])
     char *fileName;
     char ch;
     
+    fsaTable() {
+    
     //Check if a file has been specified
     if(argc > 2) {
-        printf("Too many arguments given. See the help screen\n");
+        fprintf(stderr, "Too many arguments given. See the help screen\n");
         helpScreen();
-        return(1);
+        return 0;
     }
     else if (argc < 2) {
         printf("No filename was specified. See the help screen\n");
