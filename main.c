@@ -4,8 +4,17 @@
 * main.c processes the command line arguments (a file) *
 * after opening the file it will call testScanner()    *
 *******************************************************/
+#include "stdio.h"
+#include "errno.h"
+#include "ctype.h"
+#include "token.h"
+#include "scanner.h"
+#include "testscanner.h"
+#include "string.h"
+#include "stdlib.h"
 
-# include <stdio.h>
+int z = 0;
+int errorIndex = 0;
 
 int main(int argc, char *argv[])
 {
@@ -33,9 +42,10 @@ int main(int argc, char *argv[])
         printf("Opening file %s\n", fileName);
         fp = fopen(fileName, "r");
         
+        tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
         if (fp == NULL) {
-            printf("Error: Could not open file %s\n", fileName);
+            perror("Error: Could not open file %s\n", fileName);
             return 0;
         }
         else {
@@ -70,7 +80,13 @@ int main(int argc, char *argv[])
         }
     }
              
-    checkIfKey();
+    //end of file token 
+	strcpy(tokens[z].instance,"EndToken");
+	tokens[z].lineNum = --line;
+	tokens[z].tokenType = EOT;
+	z++;
+             
+    checkIfKeyword();
     testScanner();
     free(tokens);
              
