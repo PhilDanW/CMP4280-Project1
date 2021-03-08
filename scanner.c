@@ -39,67 +39,67 @@ void mainDriver(char *array, int line) {
           }
         
           switch(state) {
-            case '101':
+            case '1001':
                       tokens[z].tokenType = IDENTIFIER;
                       break;
-            case '102':
+            case '1002':
                       tokens[z].tokenType = NUMBER;
                       break;
-            case '103':
+            case '1003':
                       tokens[z].tokenType = KEYWORD;
                       break;
-            case '104':
+            case '1004':
                       tokens[z].tokenType = EQUAL;
                       break;
-            case '105':
+            case '1005':
                       tokens[z].tokenType = LESS;
                       break;
-            case '106':
+            case '1006':
                       tokens[z].tokenType = GREATER;
                       break;
-            case '107':
+            case '1007':
                       tokens[z].tokenType = COLON;
                       break;
-            case '108':
+            case '1008':
                       tokens[z].tokenType = PLUS;
                       break;
-            case '109':
+            case '1009':
                       tokens[z].tokenType = MINUS;
                       break;
-            case '110':
+            case '1010':
                       tokens[z].tokenType = ASTERIK;
                       break;
-            case '111':
+            case '1011':
                       tokens[z].tokenType = SLASH;
                       break;
-            case '112':
+            case '1012':
                       tokens[z].tokenType = PERCENT;
                       break;
-            case '113':
+            case '1013':
                       tokens[z].tokenType = DOT;
                       break;
-            case '114':
+            case '1014':
                       tokens[z].tokenType = L_PARENT;
                       break;
-            case '115':
+            case '1015':
                       tokens[z].tokenType = R_PARENT;
                       break;
-            case '116':
+            case '1016':
                       tokens[z].tokenType = COMMA;
                       break;
-            case '117':
+            case '1017':
                       tokens[z].tokenType = L_BRACE;
                       break;
-            case '118':
+            case '1018':
                       tokens[z].tokenType = R_BRACE;
                       break;
-            case '119':
+            case '1019':
                       tokens[z].tokenType = SEMICOLON;
                       break;
-            case '120':
+            case '1020':
                       tokens[z].tokenType = L_BRACKET;
                       break;
-            case '121':
+            case '1021':
                       tokens[z].tokenType = R_BRACKET;
                       break;
           }
