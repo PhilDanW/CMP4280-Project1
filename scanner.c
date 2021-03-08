@@ -21,7 +21,7 @@ void mainDriver(char *array, int line) {
   ignoreComments(array, line);
   
   for(i = 0; i < strlen(array); i++) {
-      nextChar = isChar(array[i]);
+      nextChar = isCharacter(array[i]);
       if (nextChar == -1) {
           sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
           strcpy(error[errorIndex], errorBuffer);
