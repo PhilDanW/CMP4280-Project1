@@ -12,6 +12,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+//driver that loops throught the table
 void mainDriver(char *array, int line) {
   int i;
   int j;
