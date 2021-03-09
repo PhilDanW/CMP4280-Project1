@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
     //try to open the file
     else {
 	fileName = argv[1];
-	size_t len = strlen(argv[1]);
 	printf("Opening file %s\n", fileName);    
         fp = fopen(strcat(fileName, ".fs"), "r");
         
