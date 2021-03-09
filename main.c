@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 {
     //define variables to help open file
     FILE *fp = NULL;
-    char *fileName = NULL;
     char input[1000];
     int line = 1;
     
@@ -37,10 +36,8 @@ int main(int argc, char *argv[])
         return 0;
     }
     //try to open the file
-    else {
-	fileName = argv[1];
-	printf("Opening file %s\n", fileName);    
-        fp = fopen(strcat(fileName, ".fs"), "r");
+    else {   
+        fp = fopen(strcat(argv[1], ".fs"), "r");
         
         tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
@@ -49,8 +46,15 @@ int main(int argc, char *argv[])
             return 0;
         }
         else {
-            printf("File %s was opened successfully!\n", fileName);
-        }
+            fseek (file, 0, SEEK_END);
+
+	    size = ftell (file);
+	    rewind(file);
+	    if(size == 0) {
+		fprintf(stderr, "Error: The File is Empty\n");
+		return 0;
+	    }
+	}
     }
     
     //get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
