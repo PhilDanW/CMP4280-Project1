@@ -38,9 +38,11 @@ int main(int argc, char *argv[])
     }
     //try to open the file
     else {
-        fileName = argv[1];
-        printf("Opening file %s\n", fileName);
-        fp = fopen(fileName, "r");
+	int size = 0;
+	size_t len = strlen(argv[1]);
+	printf("Opening file %s\n", fileName);    
+        fp = fopen(strcat(fileName, ".fs"), "r");
+	argv[len] = '\0';
         
         tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
