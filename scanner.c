@@ -116,7 +116,7 @@ void mainDriver(char *array, int line) {
 					}
 					
 					if(state == 1021){	
-						tokens[z].tokenType = R_BRACKETS;
+						tokens[z].tokenType = R_BRACKET;
 					}
         
           if(state >= 1001 && state <= 1021){
