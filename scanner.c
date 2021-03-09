@@ -52,11 +52,11 @@ void mainDriver(char *array, int line) {
 					}
 
 					if(state == 1004){	
-						tokens[z].tokenType = LESS_THAN;
+						tokens[z].tokenType = LESS;
 					}
 					
 					if(state == 1006){	
-						tokens[z].tokenType = GREATER_THAN;
+						tokens[z].tokenType = GREATER;
 					}
 
 					if(state == 1007){	
@@ -72,7 +72,7 @@ void mainDriver(char *array, int line) {
 					}
 					
 					if(state == 1010){	
-						tokens[z].tokenType = STAR;
+						tokens[z].tokenType = ASTERIK;
 					}
 					
 					if(state == 1011){	
@@ -88,11 +88,11 @@ void mainDriver(char *array, int line) {
 					}
 					
 					if(state == 1014){	
-						tokens[z].tokenType = LEFT_PARENT;
+						tokens[z].tokenType = L_PARENT;
 					}
 					
 					if(state == 1015){	
-						tokens[z].tokenType = RIGHT_PARENT;
+						tokens[z].tokenType = R_PARENT;
 					}
 					
 					if(state == 1016){	
@@ -100,11 +100,11 @@ void mainDriver(char *array, int line) {
 					}
 					
 					if(state == 1017){	
-						tokens[z].tokenType = LEFT_BRACE;
+						tokens[z].tokenType = L_BRACE;
 					}
 					
 					if(state == 1018){	
-						tokens[z].tokenType = RIGHT_BRACE;
+						tokens[z].tokenType = R_BRACE;
 					}
 					
 					if(state == 1019){	
@@ -112,11 +112,11 @@ void mainDriver(char *array, int line) {
 					}
 					
 					if(state == 1020){	
-						tokens[z].tokenType = LEFT_BRACKETS;
+						tokens[z].tokenType = L_BRACKET;
 					}
 					
 					if(state == 1021){	
-						tokens[z].tokenType = RIGHT_BRACKETS;
+						tokens[z].tokenType = R_BRACKETS;
 					}
         
           if(state >= 1001 && state <= 1021){
