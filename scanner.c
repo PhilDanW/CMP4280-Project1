@@ -39,71 +39,85 @@ void mainDriver(char *array, int line) {
 						  isError = 1;
           }
         
-          switch(state) {
-            case '1001':
-                      tokens[z].tokenType = IDENTIFIER;
-                      break;
-            case '1002':
-                      tokens[z].tokenType = NUMBER;
-                      break;
-            case '1003':
-                      tokens[z].tokenType = KEYWORD;
-                      break;
-            case '1004':
-                      tokens[z].tokenType = EQUAL;
-                      break;
-            case '1005':
-                      tokens[z].tokenType = LESS;
-                      break;
-            case '1006':
-                      tokens[z].tokenType = GREATER;
-                      break;
-            case '1007':
-                      tokens[z].tokenType = COLON;
-                      break;
-            case '1008':
-                      tokens[z].tokenType = PLUS;
-                      break;
-            case '1009':
-                      tokens[z].tokenType = MINUS;
-                      break;
-            case '1010':
-                      tokens[z].tokenType = ASTERIK;
-                      break;
-            case '1011':
-                      tokens[z].tokenType = SLASH;
-                      break;
-            case '1012':
-                      tokens[z].tokenType = PERCENT;
-                      break;
-            case '1013':
-                      tokens[z].tokenType = DOT;
-                      break;
-            case '1014':
-                      tokens[z].tokenType = L_PARENT;
-                      break;
-            case '1015':
-                      tokens[z].tokenType = R_PARENT;
-                      break;
-            case '1016':
-                      tokens[z].tokenType = COMMA;
-                      break;
-            case '1017':
-                      tokens[z].tokenType = L_BRACE;
-                      break;
-            case '1018':
-                      tokens[z].tokenType = R_BRACE;
-                      break;
-            case '1019':
-                      tokens[z].tokenType = SEMICOLON;
-                      break;
-            case '1020':
-                      tokens[z].tokenType = L_BRACKET;
-                      break;
-            case '1021':
-                      tokens[z].tokenType = R_BRACKET;
-                      break;
-          }
+          if(state == 1001){
+						tokens[z].tokenType = IDENTIFIER;
+					}
+
+					if(state == 1002){	
+						tokens[z].tokenType = NUMBER;
+					}
+		
+					if(state == 1003){	
+						tokens[z].tokenType = EQUAL;
+					}
+
+					if(state == 1004){	
+						tokens[z].tokenType = LESS_THAN;
+					}
+					
+					if(state == 1006){	
+						tokens[z].tokenType = GREATER_THAN;
+					}
+
+					if(state == 1007){	
+						tokens[z].tokenType = COLON;
+					}
+
+					if(state == 1008){	
+						tokens[z].tokenType = PLUS;
+					}
+
+					if(state == 1009){	
+						tokens[z].tokenType = MINUS;
+					}
+					
+					if(state == 1010){	
+						tokens[z].tokenType = STAR;
+					}
+					
+					if(state == 1011){	
+						tokens[z].tokenType = SLASH;
+					}
+					
+					if(state == 1012){	
+						tokens[z].tokenType = PERCENT;
+					}
+					
+					if(state == 1013){	
+						tokens[z].tokenType = DOT;
+					}
+					
+					if(state == 1014){	
+						tokens[z].tokenType = LEFT_PARENT;
+					}
+					
+					if(state == 1015){	
+						tokens[z].tokenType = RIGHT_PARENT;
+					}
+					
+					if(state == 1016){	
+						tokens[z].tokenType = COMMA;
+					}
+					
+					if(state == 1017){	
+						tokens[z].tokenType = LEFT_BRACE;
+					}
+					
+					if(state == 1018){	
+						tokens[z].tokenType = RIGHT_BRACE;
+					}
+					
+					if(state == 1019){	
+						tokens[z].tokenType = SEMICOLON;
+					}
+					
+					if(state == 1020){	
+						tokens[z].tokenType = LEFT_BRACKETS;
+					}
+					
+					if(state == 1021){	
+						tokens[z].tokenType = RIGHT_BRACKETS;
+					}
         
           if(state >= 1001 && state <= 1021){
 						state = 0;
