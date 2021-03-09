@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     //try to open the file
     else {   
 	int size = 0;
-        fp = fopen(strcat(argv[1], ".fs"), "r");
+        fp = fopen(argv[1], "r");
         
         tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
