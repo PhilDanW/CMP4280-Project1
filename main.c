@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     }
     
     //get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
-    while(fgets(input, sizeof(input), fp)) {
+    while(fgets(input, 1000, fp)) {
         mainDriver(input, line);
         line++;
     }
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
             ungetc(ch, stdin);
         }
         
-        while(fgets(input, sizeof(input), stdin)) {
+        while(fgets(input, 1000, stdin)) {
             mainDriver(input, line);
             line++;
         }
