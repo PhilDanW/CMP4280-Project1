@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     }
     //try to open the file
     else {   
+	int size = 0;
         fp = fopen(strcat(argv[1], ".fs"), "r");
         
         tokens = (Token *) malloc(sizeof(Token));
@@ -46,10 +47,10 @@ int main(int argc, char *argv[])
             return 0;
         }
         else {
-            fseek (file, 0, SEEK_END);
+            fseek (fp, 0, SEEK_END);
 
-	    size = ftell (file);
-	    rewind(file);
+	    size = ftell(fp);
+	    rewind(fp);
 	    if(size == 0) {
 		fprintf(stderr, "Error: The File is Empty\n");
 		return 0;
