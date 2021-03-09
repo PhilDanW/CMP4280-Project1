@@ -261,46 +261,46 @@ int isCharacter(char c) {
 void checkIfKeyword() {
 	int i;
   int j;
-	char *keywords[] = {"start","stop","loop","void","var","return","scan","out","program","if","then","let"};
+	char *keywords[] = {"begin","end","loop", "while", "void", "exit", "getter", "outter", "main", "if","then","assign", "data", "proc"};
 	size_t len = sizeof(keywords)/sizeof(keywords[0]);;
 	
 	for(i=0; i < z; i++) {
 		if(tokens[i].tokenType == IDENTIFIER){
 			for (j=0; j < len; j++){
-				if(strcmp(tokens[i].instance, "start") == 0){
-					tokens[i].tokenType = START_KEYWORD;	
+				if(strcmp(tokens[i].instance, "begin") == 0){
+					tokens[i].tokenType = BEGIN_KEYWORD;	
 				}
 			
-				if(strcmp(tokens[i].instance, "stop") == 0){
-					tokens[i].tokenType = STOP_KEYWORD;	
+				if(strcmp(tokens[i].instance, "end") == 0){
+					tokens[i].tokenType = END_KEYWORD;	
 				}
 				
 				if(strcmp(tokens[i].instance, "loop") == 0){
 					tokens[i].tokenType = LOOP_KEYWORD;	
 				}
 				
+				if(strcmp(tokens[i].instance, "while") == 0){
+					tokens[i].tokenType = WHILE_KEYWORD;	
+				}
+				
 				if(strcmp(tokens[i].instance, "void") == 0){
 					tokens[i].tokenType = VOID_KEYWORD;	
 				}
-				
-				if(strcmp(tokens[i].instance, "var") == 0){
-					tokens[i].tokenType = VAR_KEYWORD;	
+
+				if(strcmp(tokens[i].instance, "exit") == 0){
+					tokens[i].tokenType = EXIT_KEYWORD;	
 				}
 
-				if(strcmp(tokens[i].instance, "return") == 0){
-					tokens[i].tokenType = RETURN_KEYWORD;	
+				if(strcmp(tokens[i].instance, "getter") == 0){
+					tokens[i].tokenType = GETTER_KEYWORD;	
 				}
 
-				if(strcmp(tokens[i].instance, "scan") == 0){
-					tokens[i].tokenType = SCAN_KEYWORD;	
+				if(strcmp(tokens[i].instance, "outter") == 0){
+					tokens[i].tokenType = OUTTER_KEYWORD;	
 				}
 
-				if(strcmp(tokens[i].instance, "out") == 0){
-					tokens[i].tokenType = OUT_KEYWORD;	
-				}
-
-				if(strcmp(tokens[i].instance, "program") == 0){
-					tokens[i].tokenType = PROGRAM_KEYWORD;	
+				if(strcmp(tokens[i].instance, "main") == 0){
+					tokens[i].tokenType = MAIN_KEYWORD;	
 				}
 				
 				if(strcmp(tokens[i].instance, "if") == 0){
@@ -311,8 +311,14 @@ void checkIfKeyword() {
 					tokens[i].tokenType = THEN_KEYWORD;	
 				}
 				
-				if(strcmp(tokens[i].instance, "let") == 0){
-					tokens[i].tokenType = LET_KEYWORD;	
+				if(strcmp(tokens[i].instance, "assign") == 0){
+					tokens[i].tokenType = ASSIGN_KEYWORD;	
+				}
+				if(strcmp(tokens[i].instance, "data") == 0){
+					tokens[i].tokenType = DATA_KEYWORD;	
+				}
+				if(strcmp(tokens[i].instance, "proc") == 0){
+					tokens[i].tokenType = PROC_KEYWORD;	
 				}
 			}
 		}
@@ -320,10 +326,7 @@ void checkIfKeyword() {
 }
   
 void fsaTable() {
-    int i;
-    int j;
-    int k = 1003;
-  
+	
     //first state
     table[0][0] = 1;
     table[0][1] = 2;
