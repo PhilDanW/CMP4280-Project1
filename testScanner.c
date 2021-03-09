@@ -65,30 +65,34 @@ void testScanner(){
 				printf("Line: %-3d | Token: %-8s | Token Type: Left Brackets Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == R_BRACKET){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Right Brackets Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == START_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: start Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == STOP_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: stop Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == BEGIN_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: begin Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == END_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: end Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == LOOP_KEYWORD){		
 				printf("Line: %-3d | Token: %-8s | Token Type: loop Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == WHILE_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: while Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == VOID_KEYWORD){		
 				printf("Line: %-3d | Token: %-8s | Token Type: void Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == VAR_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: var Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == RETURN_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: return Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == SCAN_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: scan Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == OUT_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: out Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == PROGRAM_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: program Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == EXIT_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: exit Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == GETTER_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: getter Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == OUTTER_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: outter Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == MAIN_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: main Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == IF_KEYWORD){		
 				printf("Line: %-3d | Token: %-8s | Token Type: if Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == THEN_KEYWORD){		
 				printf("Line: %-3d | Token: %-8s | Token Type: then Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == LET_KEYWORD){		
-				printf("Line: %-3d | Token: %-8s | Token Type: let Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == ASSIGN_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: assign Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
+			} else if(tokens[i].tokenType == DATA_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: data Keyword Token\n", tokens[i].lineNum, tokens[i].instance);	
+			} else if(tokens[i].tokenType == PROC_KEYWORD){		
+				printf("Line: %-3d | Token: %-8s | Token Type: proc Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == EOT){		
 				printf("Line: %-3d | Token: %-8s | Token Type: EOF Token\n", tokens[i].lineNum, tokens[i].instance);
 			}
