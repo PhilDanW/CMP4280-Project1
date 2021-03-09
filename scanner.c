@@ -217,10 +217,10 @@ int isCharacter(char c) {
 	if(c == '='){
 		return 2;
 	}
-	if(c == '<'){
+	if(c == '=<'){
 		return 3;
 	}
-	if(c == '>'){
+	if(c == '=>'){
 		return 7;
 	}
 	if(c == ':'){
