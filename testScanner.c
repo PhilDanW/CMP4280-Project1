@@ -1,3 +1,10 @@
+/************************
+* Author: Philip Wright *
+* Project 1: Scanner    *
+* testScanner.c asks for one token at a time to display*
+* the token to the screen *
+*******************************************************/
+
 #include "token.h"
 #include "scanner.h"
 #include "stdio.h"
@@ -7,14 +14,14 @@
 //test scanner
 void testScanner(){
 	int i;
-  int j;
+  	int j;
 	
 	if (isError == 1) {
 		for(j=0; j < errorIndex; j++){
 			printf("%s\n", error[j]);
 		}
 	} 
-  else {
+  	else {
 		//since my token type is enum, I have to print them all manually
 		for(i=0; i < z; i++){
 		
@@ -85,8 +92,6 @@ void testScanner(){
 			} else if(tokens[i].tokenType == EOT){		
 				printf("Line: %-3d | Token: %-8s | Token Type: EOF Token\n", tokens[i].lineNum, tokens[i].instance);
 			}
-
 		}
 	}
-
 }
