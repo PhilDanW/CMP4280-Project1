@@ -19,7 +19,6 @@ int errorIndex = 0;
 int main(int argc, char *argv[])
 {
     //define variables to help open file
-    FILE *fp = NULL;
     char input[1000];
     int line = 1;
     
@@ -29,69 +28,74 @@ int main(int argc, char *argv[])
     //Check if a file has been specified
     if(argc > 2) {
         fprintf(stderr, "Too many arguments given.\n");
+	printf("Use: \n%s\n%s <file>\n", argv[0], argv[0]);
         return 0;
     }
-    else if (argc < 2) {
-        printf("No filename was specified.\n");
-        return 0;
-    }
-    //try to open the file
-    else {   
+	
+    if (argc == 2) {
+       	 
 	int size = 0;
-        fp = fopen(argv[1], "r");
+	size_t length = strlen(argv[1]);
+	FILE *file = fopen(strcat(argv[1], ".sp2021"), "r");    
+        argv[length] = '\0';
         
         tokens = (Token *) malloc(sizeof(Token));
         //if the file was opened, pass it to the testScanner
-        if (fp == NULL) {
+        if (file == NULL) {
             perror("Error: Could not open file\n");
             return 0;
         }
         else {
-            fseek (fp, 0, SEEK_END);
+            fseek (file, 0, SEEK_END);
 
-	    size = ftell(fp);
-	    rewind(fp);
+	    size = ftell(file);
+	    rewind(file);
 	    if(size == 0) {
 		fprintf(stderr, "Error: The File is Empty\n");
 		return 0;
 	    }
 	}
-    }
-    
-    //get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
-    while(fgets(input, 1000, fp)) {
-        mainDriver(input, line);
-        line++;
-    }
+	 
+	//get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
+    	while(fgets(input, sizeof(input), file)) {
+        	mainDriver(input, line);
+        	line++;
+    	}
              
-    fclose(fp);
+    	fclose(fp);
+    }
     
     //if a file was not given, thenread from stdin
     if (argc == 1) {
+	printf("Type in input for scanner and press CTRL+D when finished\n");
         tokens = (Token *) malloc(sizeof(Token));
+	isError = 0;
+	    
         int ch = getc(stdin);
-        
         if (ch == EOF) {
-            printf("Error: no input was given\n");
+            fprintf(stderr, "Error: No input was given\n");
             return 0;
         } 
         else {
             ungetc(ch, stdin);
         }
         
-        while(fgets(input, 1000, stdin)) {
+        while(fgets(input, sizeof(input), stdin)) {
             mainDriver(input, line);
             line++;
         }
     }
              
     //end of file token 
-	strcpy(tokens[z].instance,"EndToken");
+	strcpy(tokens[z].instance, "EndToken");
 	tokens[z].lineNum = --line;
 	tokens[z].tokenType = EOT;
 	z++;
              
     checkIfKeyword();
+    printf("\n");
+	
+	
     testScanner();
     free(tokens);
              
