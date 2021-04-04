@@ -135,6 +135,7 @@ void mainDriver(char *array, int line) {
 					}
 			}
 	}
+}
 			
       
   
