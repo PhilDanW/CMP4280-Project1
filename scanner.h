@@ -13,7 +13,7 @@ extern int errorIndex;
 int isError;
 
 void mainDriver(char *array, int line);
-void ignoreComments(char *array, int line);
+void ignoreComments(char *array);
 void checkError();
 int isCharacter(char c);
 void checkIfKeyword();
