@@ -17,7 +17,7 @@ void testScanner(){
   	int j;
 	
 	if (isError == 1) {
-		for(j=0; j < errorIndex; j++){
+		for(j = 0; j < errorIndex; j++){
 			printf("%s\n", error[j]);
 		}
 	} 
