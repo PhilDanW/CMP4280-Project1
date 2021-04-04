@@ -15,23 +15,24 @@
 //driver that loops throught the table
 void mainDriver(char *array, int line) {
   int i;
-  int j;
+  int j = 0;
   int nextChar = 0;
   int state = 0;
   
-  ignoreComments(array, line);
+  ignoreComments(array);
   
-  for(i = 0; i < strlen(array); i++) {
+  for(i = 0; i < strlen(array); i++) 
+	{
       nextChar = isCharacter(array[i]);
-      if (nextChar == -1) {
+      if (nextChar == -1) 
+			{
           sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
           strcpy(error[errorIndex], errorBuffer);
-					errorIndex++;	
-					isError = 1;
-      }
-      else {
+		  		errorIndex++;	
+		  		isError = 1;
+      } else {
+				
           state = table[state][nextChar];
-        
           if(state == -1) {
               sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
 						  strcpy(error[errorIndex], errorBuffer);
@@ -40,129 +41,128 @@ void mainDriver(char *array, int line) {
           }
         
           if(state == 1001){
-						tokens[z].tokenType = IDENTIFIER;
-					}
-
+							tokens[z].tokenType = IDENTIFIER;
+		  		}
 					if(state == 1002){	
-						tokens[z].tokenType = NUMBER;
+							tokens[z].tokenType = NUMBER;
 					}
 		
 					if(state == 1003){	
-						tokens[z].tokenType = EQUAL;
+							tokens[z].tokenType = EQUAL;
 					}
 
 					if(state == 1004){	
-						tokens[z].tokenType = LESS;
+							tokens[z].tokenType = LESS;
 					}
-					
+
 					if(state == 1006){	
 						tokens[z].tokenType = GREATER;
 					}
 
 					if(state == 1007){	
-						tokens[z].tokenType = COLON;
+							tokens[z].tokenType = COLON;
 					}
 
 					if(state == 1008){	
-						tokens[z].tokenType = PLUS;
+							tokens[z].tokenType = PLUS;
 					}
 
 					if(state == 1009){	
-						tokens[z].tokenType = MINUS;
+							tokens[z].tokenType = MINUS;
 					}
-					
+
 					if(state == 1010){	
-						tokens[z].tokenType = ASTERIK;
+							tokens[z].tokenType = ASTERIK;
 					}
-					
+
 					if(state == 1011){	
-						tokens[z].tokenType = SLASH;
+							tokens[z].tokenType = SLASH;
 					}
-					
+
 					if(state == 1012){	
-						tokens[z].tokenType = PERCENT;
+							tokens[z].tokenType = PERCENT;
 					}
-					
+
 					if(state == 1013){	
-						tokens[z].tokenType = DOT;
+							tokens[z].tokenType = DOT;
 					}
-					
+
 					if(state == 1014){	
-						tokens[z].tokenType = L_PARENT;
+							tokens[z].tokenType = L_PARENT;
 					}
-					
+
 					if(state == 1015){	
-						tokens[z].tokenType = R_PARENT;
+							tokens[z].tokenType = R_PARENT;
 					}
-					
+
 					if(state == 1016){	
-						tokens[z].tokenType = COMMA;
+							tokens[z].tokenType = COMMA;
 					}
-					
+
 					if(state == 1017){	
-						tokens[z].tokenType = L_BRACE;
+							tokens[z].tokenType = L_BRACE;
 					}
-					
+
 					if(state == 1018){	
-						tokens[z].tokenType = R_BRACE;
+							tokens[z].tokenType = R_BRACE;
 					}
-					
+
 					if(state == 1019){	
-						tokens[z].tokenType = SEMICOLON;
+							tokens[z].tokenType = SEMICOLON;
 					}
-					
+
 					if(state == 1020){	
-						tokens[z].tokenType = L_BRACKET;
+							tokens[z].tokenType = L_BRACKET;
 					}
-					
+
 					if(state == 1021){	
-						tokens[z].tokenType = R_BRACKET;
+							tokens[z].tokenType = R_BRACKET;
 					}
         
-          if(state >= 1001 && state <= 1021){
-						state = 0;
-						tokens[z].lineNum = line;	
-            checkError();
-						z++;
-						i--;
-						j=0;
-						j--;
+					if(state >= 1001 && state <= 1021){
+							state = 0;
+							tokens[z].lineNum = line;	
+							checkError();
+							z++;
+							i--;
+							j=0;
+							j--;
 					}	 
 
 					if(!isspace(array[i])){
-						tokens[z].instance[j] = array[i];
-						j++;
-					} 
-      }
-   }
-}
+							tokens[z].instance[j] = array[i];
+							j++;
+					}
+			}
+	}
+			
+      
+  
+
 
 //functions that ignore comments and check for error
-void ignoreComments(char *array, int line){
+void ignoreComments(char *array){
 	int i;
 	size_t length = strlen(array);
 
 	for(i = 0; i < length; i++){
-		if (array[i] == '$') {
+		if (array[i] == '\\') {
 			int j;			
 			array[i] = ' ';
 					
-			for(j=i+1; j < length; j++ ){
-				if(array[j] == '$' && array[j] != '\n'){	
-					array[j] = ' ';
-					j = length + 1;
-				} else if(array[j] != '$' && array[j] == '\n'){	
-					sprintf(errorBuffer, "Scanner Error in Line %d: Missing $ at the end of the line", line);
-					strcpy(error[errorIndex], errorBuffer);
-					errorIndex++;
-					isError = 1;
-				} else {
-					array[j] = ' ';
-				}			
+			for(j = i+1; j < length; j++ ){
+					if(array[j] == '\\' && array[j] != '\n'){	
+							array[j] = ' ';
+							j = length + 1;
+					} else {
+							array[j] = ' ';
+					}
 			}
 		}
-	}	
+	}
+	printf("%s", array);
 }
+			
 
 void checkError(){	
 	//check the identifier first letter starts  with capital letter
@@ -172,7 +172,7 @@ void checkError(){
 	if(tokens[z].tokenType == IDENTIFIER){
 		
 			//check if length is greater than 8 show error
-			if (len > 8) {
+			if (len >= 8) {
 				sprintf(errorBuffer, "Scanner Error in Line %d: identifier %s, needs to have max letter of 8", tokens[z].lineNum, tokens[z].instance);
 				strcpy(error[errorIndex], errorBuffer);
 				errorIndex++;
@@ -202,74 +202,17 @@ void checkError(){
 		     
 //check the character then return nextChar Index
 int isCharacter(char c) {
-	if(isalpha(c)){
+	if(isalpha(c) || isdigit(c) || c == '=' || c == '<' || c == ' ' || c == '\t' || c == '\n' ||
+		 c == '\\' || c == '>' || c == ':' || c == '+' || c == '-' || c == '*' || c == '/' || 
+		 c == '%' || c == '.' || c == '(' || c == ')' || c == ',' || c == '{' || c == '}' || 
+		 c == ';' || c == '[' || c == ']') {
+		 return 1;
+	}else
 		return 0;
-  }
-	if(c == '_'){
-		return 6;
-	}
-	if(c == ' ' || c == '\t' || c == '\n') {
-		return 4;
-	}
-	if(isdigit(c)){
-		return 1;
-	}
-	if(c == '='){
-		return 2;
-	}
-	if(c == '<'){
-		return 3;
-	}
-	if(c == '>'){
-		return 7;
-	}
-	if(c == ':'){
-		return 8;
-	}
-	if(c == '+'){
-		return 9;
-	}
-	if(c == '-'){
-		return 10;
-	}
-	if(c == '*'){
-		return 11;
-	}
-  if(c == '/'){
-		return 12;
-	}
-	if(c == '%'){
-		return 13;
-	}
-	if(c == '.'){
-		return 14;
-	}
-	if(c == '('){
-		return 15;
-	}
-	if(c == ')'){
-		return 16;
-	}
-	if(c == ','){
-		return 17;
-	}
-	if(c == '{'){
-		return 18;
-	}
-	if(c == '}'){
-		return 19;
-	}
-	if(c == ';'){
-		return 20;
-	}
-	if(c == '['){
-		return 21;
-	}
-	if(c == ']'){
-		return 22;
-	}
-	return -1;
 }
+  
+
+	
     
 //check if the identifier is keyword 
 void checkIfKeyword() {
@@ -278,66 +221,67 @@ void checkIfKeyword() {
 	char *keywords[] = {"begin","end","loop", "while", "void", "exit", "getter", "outter", "main", "if","then","assign", "data", "proc"};
 	size_t len = sizeof(keywords)/sizeof(keywords[0]);;
 	
-	for(i=0; i < z; i++) {
-		if(tokens[i].tokenType == IDENTIFIER){
-			for (j=0; j < len; j++){
-				if(strcmp(tokens[i].instance, "begin") == 0){
-					tokens[i].tokenType = BEGIN_KEYWORD;	
-				}
-			
-				if(strcmp(tokens[i].instance, "end") == 0){
-					tokens[i].tokenType = END_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "loop") == 0){
-					tokens[i].tokenType = LOOP_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "while") == 0){
-					tokens[i].tokenType = WHILE_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "void") == 0){
-					tokens[i].tokenType = VOID_KEYWORD;	
-				}
+	for(i = 0; i < z; i++) {
+			if(tokens[i].tokenType == IDENTIFIER){
+				for (j=0; j < len; j++){
+						if(strcmp(tokens[i].instance, "begin") == 0){
+							tokens[i].tokenType = BEGIN_KEYWORD;	
+						}
 
-				if(strcmp(tokens[i].instance, "exit") == 0){
-					tokens[i].tokenType = EXIT_KEYWORD;	
-				}
+						if(strcmp(tokens[i].instance, "end") == 0){
+							tokens[i].tokenType = END_KEYWORD;	
+						}
 
-				if(strcmp(tokens[i].instance, "getter") == 0){
-					tokens[i].tokenType = GETTER_KEYWORD;	
-				}
+						if(strcmp(tokens[i].instance, "loop") == 0){
+							tokens[i].tokenType = LOOP_KEYWORD;	
+						}
 
-				if(strcmp(tokens[i].instance, "outter") == 0){
-					tokens[i].tokenType = OUTTER_KEYWORD;	
-				}
+						if(strcmp(tokens[i].instance, "while") == 0){
+							tokens[i].tokenType = WHILE_KEYWORD;	
+						}
 
-				if(strcmp(tokens[i].instance, "main") == 0){
-					tokens[i].tokenType = MAIN_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "if") == 0){
-					tokens[i].tokenType = IF_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "then") == 0){
-					tokens[i].tokenType = THEN_KEYWORD;	
-				}
-				
-				if(strcmp(tokens[i].instance, "assign") == 0){
-					tokens[i].tokenType = ASSIGN_KEYWORD;	
-				}
-				if(strcmp(tokens[i].instance, "data") == 0){
-					tokens[i].tokenType = DATA_KEYWORD;	
-				}
-				if(strcmp(tokens[i].instance, "proc") == 0){
-					tokens[i].tokenType = PROC_KEYWORD;	
+						if(strcmp(tokens[i].instance, "void") == 0){
+							tokens[i].tokenType = VOID_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "exit") == 0){
+							tokens[i].tokenType = EXIT_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "getter") == 0){
+							tokens[i].tokenType = GETTER_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "outter") == 0){
+							tokens[i].tokenType = OUTTER_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "main") == 0){
+							tokens[i].tokenType = MAIN_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "if") == 0){
+							tokens[i].tokenType = IF_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "then") == 0){
+							tokens[i].tokenType = THEN_KEYWORD;	
+						}
+
+						if(strcmp(tokens[i].instance, "assign") == 0){
+							tokens[i].tokenType = ASSIGN_KEYWORD;	
+						}
+						if(strcmp(tokens[i].instance, "data") == 0){
+							tokens[i].tokenType = DATA_KEYWORD;	
+						}
+						if(strcmp(tokens[i].instance, "proc") == 0){
+							tokens[i].tokenType = PROC_KEYWORD;	
+						}
 				}
 			}
-		}
 	}
 }
+
   
 void fsaTable() {
 	
