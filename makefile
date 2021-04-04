@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall 
 TARGET = scanner 
-OBJ = main.o testscanner.o scanner.o
-SRC = main.c testscanner.c scanner.c
+OBJ = main.o testScanner.o scanner.o
+SRC = main.c testScanner.c scanner.c
 
 all: $(TARGET) 
 	
