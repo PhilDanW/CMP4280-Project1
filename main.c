@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
         	line++;
     	}
              
-    	fclose(fp);
+    	fclose(file);
     }
     
     //if a file was not given, thenread from stdin
