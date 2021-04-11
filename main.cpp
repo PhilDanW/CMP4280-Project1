@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 		std::cout << "stdin.temp" << std::endl;
 	}
 	//otherwise take input from the keyboard
-	else if {
+	else if (argc == 1) {
 		std::string keyboard;
 		std::ofstream temp;
 		fname = "stdin.temp";
