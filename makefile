@@ -1,16 +1,8 @@
-CC = gcc
-CFLAGS = -Wall 
-TARGET = scanner 
-OBJ = main.o testScanner.o scanner.o
-SRC = main.c testScanner.c scanner.c
+CXX = g++
+CXXFLAGS = -std=c++0x -Wall -g
 
-all: $(TARGET) 
+scanner: main.cpp scanner.cpp testScanner.cpp
+	$(CXX) $(CXXFLAGS) -o scanner main.cpp testScanner.cpp scanner.cpp
 	
-$(TARGET):$(OBJ)
-	$(CC) -o $(TARGET) $(OBJ)
-
-$(OBJ): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC)
-
 clean:
-	/bin/rm -f *.o $(TARGET) 
+	rm -f scanner *.o stdin.temp
