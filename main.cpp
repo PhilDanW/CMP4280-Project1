@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		std::ofstream temp;
 		fname = "stdin.temp";
 		
-		temp.open(fname, std::ios:trunc);
+		temp.open(fname, std::ios::trunc);
 		
 		std::string str = "";
 		std::cout << "Type you input here. Pressing \"Enter\" will represent EOF. Type CTRL+D to finish input" << std::endl;
