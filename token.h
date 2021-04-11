@@ -1,56 +1,60 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
-#define MAX 9
-#define LIMIT 200
+#include <string>
 
-typedef enum {
-	IDENTIFIER,
-	KEYWORD,
-	INT,	
-	EQUAL,
-	GREATER_THAN,
-	LESS_THAN,
-	COLON,
-	PLUS,
-	MINUS,
-	STAR,
-	SLASH,
-	PERCENT,
-	DOT,
-	LEFT_PARENT,
-	RIGHT_PARENT,
-	COMMA,
-	LEFT_BRACE,
-	RIGHT_BRACE,
-	SEMICOLON,
-	LEFT_BRACKETS,
-	RIGHT_BRACKETS,
-	
-	//keywords
-	BEGIN_KEYWORD,
-	END_KEYWORD,
-	LOOP_KEYWORD,
-	WHILE_KEYWORD,
-	VOID_KEYWORD,
-	EXIT_KEYWORD,
-	GETTER_KEYWORD,
-	OUTTER_KEYWORD,
-	MAIN_KEYWORD,
-	IF_KEYWORD,
-	THEN_KEYWORD,
-	ASSIGN_KEYWORD,
-	DATA_KEYWORD,
-	PROC_KEYWORD,
-	EOT // end of token
+enum tokens {
+	BEGIN_TK,                 
+    END_TK,                   
+    LOOP_TK,                  
+    WHILE_TK,                 
+    VOID_TK,                  
+    EXIT_TK,                  
+    GETTER_TK,               
+    OUTTER_TK,                
+    MAIN_TK,                  
+    IF_TK,                   
+    THEN_TK,                  
+    ASSIGN_TK,               
+    DATA_TK,               
+    PROC_TK,                  
+    EQUALS_TK,                
+    EQUALS_OR_LESS_THAN_TK,   
+    EQUALS_OR_GREAT_THAN_TK,  
+    EQUALS_EQUALS_TK,         
+    COLON_TK,                 
+    COLON_EQUALS_TK,          
+    PLUS_TK,                  
+    MINUS_TK,                 
+    ASTERISK_TK,              
+    SLASH_TK,                 
+    PERCENT_TK,               
+    PERIOD_TK,                
+    LEFT_PAREN_TK,            
+    RIGHT_PAREN_TK,           
+    COMMA_TK,                 
+    LEFT_BRACE_TK,            
+    RIGHT_BRACE_TK,           
+    SEMI_COLON_TK,            
+    LEFT_BRACKET_TK,         
+    RIGHT_BRACKET_TK,         
+    ID_TK,                    
+    INT_TK,                   
+    EOF_TK,                   
+    ERROR_TK                  
 } TokenType;
 
-typedef struct {
-	TokenType tokenType;
-	char instance[100];
+struct Token{
 	int lineNum;
-} Token;
-
-Token* tokens;
+	tokens tokenID;
+	std::string tokenString;
+	
+	Token(tokens ID, std::string string, int lineNum)
+	{
+		this->lineNum = lineNum;
+		this->tokenID = ID;
+		this->tokenString = string;
+	}
+};
 
 #endif
