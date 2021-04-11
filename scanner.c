@@ -34,100 +34,102 @@ void mainDriver(char *array, int line) {
 				
           state = table[state][nextChar];
           if(state == -1) {
-              sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
-						  strcpy(error[errorIndex], errorBuffer);
-						  errorIndex++;	
-						  isError = 1;
+          		sprintf(errorBuffer, "Scanner Error in line %d:  %c Invalid Character", line, array[i]);
+			  	strcpy(error[errorIndex], errorBuffer);
+				errorIndex++;	
+				isError = 1;
           }
         
           if(state == 1001){
-							tokens[z].tokenType = IDENTIFIER;
-		  		}
-					if(state == 1002){	
-							tokens[z].tokenType = NUMBER;
-					}
-		
-					if(state == 1003){	
-							tokens[z].tokenType = EQUAL;
-					}
+				tokens[z].tokenType = IDENTIFIER;
+		  }
+			if(state == 1002){	
+					tokens[z].tokenType = INT;
+			}
 
-					if(state == 1004){	
-							tokens[z].tokenType = LESS;
-					}
+			if(state == 1003){	
+					tokens[z].tokenType = EQUAL;
+			}
 
-					if(state == 1006){	
-						tokens[z].tokenType = GREATER;
-					}
+			if(state == 1004){	
+					tokens[z].tokenType = LESS_THAN;
+			}
+		  	if(state == 1005){
+					tokens[z].tokenType = KEYWORD;
 
-					if(state == 1007){	
-							tokens[z].tokenType = COLON;
-					}
+			if(state == 1006){	
+				tokens[z].tokenType = GREATER_THAN;
+			}
 
-					if(state == 1008){	
-							tokens[z].tokenType = PLUS;
-					}
+			if(state == 1007){	
+					tokens[z].tokenType = COLON;
+			}
 
-					if(state == 1009){	
-							tokens[z].tokenType = MINUS;
-					}
+			if(state == 1008){	
+					tokens[z].tokenType = PLUS;
+			}
 
-					if(state == 1010){	
-							tokens[z].tokenType = ASTERIK;
-					}
+			if(state == 1009){	
+					tokens[z].tokenType = MINUS;
+			}
 
-					if(state == 1011){	
-							tokens[z].tokenType = SLASH;
-					}
+			if(state == 1010){	
+					tokens[z].tokenType = STAR;
+			}
 
-					if(state == 1012){	
-							tokens[z].tokenType = PERCENT;
-					}
+			if(state == 1011){	
+					tokens[z].tokenType = SLASH;
+			}
 
-					if(state == 1013){	
-							tokens[z].tokenType = DOT;
-					}
+			if(state == 1012){	
+					tokens[z].tokenType = PERCENT;
+			}
 
-					if(state == 1014){	
-							tokens[z].tokenType = L_PARENT;
-					}
+			if(state == 1013){	
+					tokens[z].tokenType = DOT;
+			}
 
-					if(state == 1015){	
-							tokens[z].tokenType = R_PARENT;
-					}
+			if(state == 1014){	
+					tokens[z].tokenType = LEFT_PARENT;
+			}
 
-					if(state == 1016){	
-							tokens[z].tokenType = COMMA;
-					}
+			if(state == 1015){	
+					tokens[z].tokenType = RIGHT_PARENT;
+			}
 
-					if(state == 1017){	
-							tokens[z].tokenType = L_BRACE;
-					}
+			if(state == 1016){	
+					tokens[z].tokenType = COMMA;
+			}
 
-					if(state == 1018){	
-							tokens[z].tokenType = R_BRACE;
-					}
+			if(state == 1017){	
+					tokens[z].tokenType = LEFT_BRACE;
+			}
 
-					if(state == 1019){	
-							tokens[z].tokenType = SEMICOLON;
-					}
+			if(state == 1018){	
+					tokens[z].tokenType = RIGHT_BRACE;
+			}
 
-					if(state == 1020){	
-							tokens[z].tokenType = L_BRACKET;
-					}
+			if(state == 1019){	
+					tokens[z].tokenType = SEMICOLON;
+			}
 
-					if(state == 1021){	
-							tokens[z].tokenType = R_BRACKET;
-					}
-        
-					if(state >= 1001 && state <= 1021){
-							state = 0;
-							tokens[z].lineNum = line;	
-							checkError();
-							z++;
-							i--;
-							j=0;
-							j--;
-					}	 
+			if(state == 1020){	
+					tokens[z].tokenType = LEFT_BRACKETS;
+			}
+
+			if(state == 1021){	
+					tokens[z].tokenType = RIGHT_BRACKETS;
+			}
+
+			if(state >= 1001 && state <= 1021){
+					state = 0;
+					tokens[z].lineNum = line;	
+					checkError();
+					z++;
+					i--;
+					j=0;
+					j--;
+			}	 
 
 					if(!isspace(array[i])){
 							tokens[z].instance[j] = array[i];
@@ -147,12 +149,12 @@ void ignoreComments(char *array){
 	size_t length = strlen(array);
 
 	for(i = 0; i < length; i++){
-		if (array[i] == '\\') {
+		if (array[i] == '$$') {
 			int j;			
 			array[i] = ' ';
 					
 			for(j = i+1; j < length; j++ ){
-					if(array[j] == '\\' && array[j] != '\n'){	
+					if(array[j] == '$$' && array[j] != '\n'){	
 							array[j] = ' ';
 							j = length + 1;
 					} else {
@@ -161,7 +163,7 @@ void ignoreComments(char *array){
 			}
 		}
 	}
-	printf("%s", array);
+	//printf("%s", array);
 }
 			
 
@@ -218,7 +220,7 @@ int isCharacter(char c) {
 //check if the identifier is keyword 
 void checkIfKeyword() {
 	int i;
-  int j;
+  	int j;
 	char *keywords[] = {"begin","end","loop", "while", "void", "exit", "getter", "outter", "main", "if","then","assign", "data", "proc"};
 	size_t len = sizeof(keywords)/sizeof(keywords[0]);;
 	
