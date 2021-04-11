@@ -189,29 +189,116 @@ void checkError(){
 				errorIndex++;	
 				isError = 1;
 			}
-  }
+  	}
 		
 	//check if the length of digit is longer than 8 then show error
-	if(tokens[z].tokenType == NUMBER){
+	if(tokens[z].tokenType == INT){
 					
 		  if (len > 8) {
 				sprintf(errorBuffer, "Scanner Error in Line %d: integer %s, needs to have max digit of 8", tokens[z].lineNum, tokens[z].instance);
 				strcpy(error[errorIndex], errorBuffer);
 				errorIndex++;
 				isError = 1;
-			}	
-  }
+		  }	
+  	}
 }
 		     
-//check the character then return nextChar Index
 int isCharacter(char c) {
-	if(isalpha(c) || isdigit(c) || c == '=' || c == '<' || c == ' ' || c == '\t' || c == '\n' ||
-		 c == '\\' || c == '>' || c == ':' || c == '+' || c == '-' || c == '*' || c == '/' || 
-		 c == '%' || c == '.' || c == '(' || c == ')' || c == ',' || c == '{' || c == '}' || 
-		 c == ';' || c == '[' || c == ']') {
-		 return 1;
-	}else
+
+	if(isalpha(c)){
 		return 0;
+	}
+
+	if(isdigit(c)){
+		return 1;
+	}
+	
+	if(c == '='){
+		return 2;
+	}
+	
+	if(c == '<'){
+		return 3;
+	}
+
+	 if(c == ' ' || c == '\t' || c == '\n') {
+                return 4;
+        }
+
+	 if(c == '\\'){ // this does nothing, clean up
+                return 6;
+        }
+
+	
+	if(c == '>'){
+		return 7;
+	}
+	
+	
+	if(c == ':'){
+		return 8;
+	}
+	
+	if(c == '+'){
+		return 9;
+	}
+
+	
+	if(c == '-'){
+		return 10;
+	}
+	
+	if(c == '*'){
+		return 11;
+	}
+
+
+	if(c == '/'){
+		return 12;
+	}
+
+	if(c == '%'){
+		return 13;
+	}
+
+
+	if(c == '.'){
+		return 14;
+	}
+	
+	if(c == '('){
+		return 15;
+	}
+
+
+	if(c == ')'){
+		return 16;
+	}
+
+	if(c == ','){
+		return 17;
+	}
+
+
+	if(c == '{'){
+		return 18;
+	}
+
+	if(c == '}'){
+		return 19;
+	}
+	
+	if(c == ';'){
+		return 20;
+	}
+	if(c == '['){
+		return 21;
+	}
+
+	if(c == ']'){
+		return 22;
+	}
+	return -1;
 }
   
 
