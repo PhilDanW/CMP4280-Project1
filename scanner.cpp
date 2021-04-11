@@ -88,7 +88,7 @@ std::map<int, tokens> endState = {
     {106, COLON_TOKEN},
     {107, COLON_EQUAL_TOKEN},
     {108, ADD_TOKEN},
-    {109, SUBSTRACT_TOKEN},
+    {109, SUBTRACT_TOKEN},
     {110, ASTERISK_TOKEN},
     {111, DIVIDE_TOKEN},
     {112, MODULUS_TOKEN},
