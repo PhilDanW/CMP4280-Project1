@@ -1,22 +1,15 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
-#define row 21
-#define col 24
-	 
-int table[row][col];
+#include "token.h"
+#include <fstream>
+#include <map>
+#include <string>
 
-extern int z;
-char error[LIMIT][LIMIT];
-char errorBuffer[LIMIT];
-extern int errorIndex;
-int isError;
+Token scanner(std::ifstream& in_file, int& lineNum);
 
-void mainDriver(char *array, int line);
-void ignoreComments(char *array);
-void checkError();
-int isCharacter(char c);
-void checkIfKeyword();
-void fsaTable();
+int getColumn(char the_char);
+
+Token setToken(int state, std::string word, int lineNum);
 
 #endif
