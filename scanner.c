@@ -149,12 +149,12 @@ void ignoreComments(char *array){
 	size_t length = strlen(array);
 
 	for(i = 0; i < length; i++){
-		if (array[i] == '$$') {
+		if (array[i] == "$$") {
 			int j;			
 			array[i] = ' ';
 					
 			for(j = i+1; j < length; j++ ){
-					if(array[j] == '$$' && array[j] != '\n'){	
+					if(array[j] == "$$" && array[j] != '\n'){	
 							array[j] = ' ';
 							j = length + 1;
 					} else {
