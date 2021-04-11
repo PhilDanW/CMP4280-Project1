@@ -27,13 +27,13 @@ void testScanner(){
 		
 			if(tokens[i].tokenType == IDENTIFIER){
 				printf("Line: %-3d | Token: %-8s | Token Type: Identifier Token\n", tokens[i].lineNum, tokens[i].instance);
-			} else if(tokens[i].tokenType == NUMBER){	
+			} else if(tokens[i].tokenType == INT){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Number Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == EQUAL){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Equal Token\n", tokens[i].lineNum, tokens[i].instance);	
-			}  else if(tokens[i].tokenType == LESS){	
+			}  else if(tokens[i].tokenType == LESS_THAN){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Less Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == GREATER){	
+			}  else if(tokens[i].tokenType == GREATER_THAN){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Greather Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == COLON){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Colon Token\n", tokens[i].lineNum, tokens[i].instance);
@@ -41,7 +41,7 @@ void testScanner(){
 				printf("Line: %-3d | Token: %-8s | Token Type: Plus Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == MINUS){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Minus Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == ASTERIK){	
+			}  else if(tokens[i].tokenType == STAR){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Asterik Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == SLASH){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Slash Token\n", tokens[i].lineNum, tokens[i].instance);
@@ -49,21 +49,21 @@ void testScanner(){
 				printf("Line: %-3d | Token: %-8s | Token Type: Percent Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == DOT){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Dot Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == L_PARENT){	
+			}  else if(tokens[i].tokenType == LEFT_PARENT){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Left Parenthesis Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == R_PARENT){	
+			}  else if(tokens[i].tokenType == RIGHT_PARENT){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Right Parenthesis Token\n", tokens[i].lineNum, tokens[i].instance);
 			}  else if(tokens[i].tokenType == COMMA){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Comma Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == L_BRACE){	
+			}  else if(tokens[i].tokenType == LEFT_BRACE){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Left Brace Token\n", tokens[i].lineNum, tokens[i].instance);	
-			}  else if(tokens[i].tokenType == R_BRACE){	
+			}  else if(tokens[i].tokenType == RIGHT_BRACE){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Right Brace Token\n", tokens[i].lineNum, tokens[i].instance);	
 			}  else if(tokens[i].tokenType == SEMICOLON){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Semicolon Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == L_BRACKET){	
+			}  else if(tokens[i].tokenType == LEFT_BRACKETS){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Left Brackets Token\n", tokens[i].lineNum, tokens[i].instance);
-			}  else if(tokens[i].tokenType == R_BRACKET){	
+			}  else if(tokens[i].tokenType == RIGHT_BRACKETS){	
 				printf("Line: %-3d | Token: %-8s | Token Type: Right Brackets Token\n", tokens[i].lineNum, tokens[i].instance);
 			} else if(tokens[i].tokenType == BEGIN_KEYWORD){		
 				printf("Line: %-3d | Token: %-8s | Token Type: begin Keyword Token\n", tokens[i].lineNum, tokens[i].instance);
