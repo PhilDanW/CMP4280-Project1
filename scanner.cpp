@@ -150,7 +150,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
             return Token(ERROR_TK, "Invalid char", lineNum);
         }
 
-        lookAhead = fsa_table[state][fsaColumn];
+        lookAhead = fsa_table[initState][fsaColumn];
 
         if (lookAhead == 23) {                  // error
             std::cout << "SCANNER ERROR 2: Invalid char \"" << the_char << "\"";
