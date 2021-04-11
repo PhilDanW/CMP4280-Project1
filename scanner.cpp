@@ -122,7 +122,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
                     if (in_file.eof()) {
 			//if there is no closing $$ for a comment print error
                         std::cout << "SCANNER ERROR: Comment not closed, EOF reached at line: " << lineNum << std::endl;   
-                        return Token(ERROR_TK, "No end to comment", lineNum);
+                        return Token(ERROR_TOKEN, "No end to comment", lineNum);
                     }
                     if (the_char == '$') {
                         in_file.get(the_char);  
@@ -147,7 +147,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
             std::cout << "SCANNER ERROR: Invalid character detected \'" << the_char << "\'";
             std::cout << " at line: " << lineNum << std::endl;
 
-            return Token(ERROR_TK, "Invalid char", lineNum);
+            return Token(ERROR_TOKEN, "Invalid char", lineNum);
         }
 
         lookAhead = fsa_table[initState][fsaColumn];
@@ -155,11 +155,11 @@ Token scanner(std::ifstream& in_file, int& lineNum){
         if (lookAhead == 23) {                  // error
             std::cout << "SCANNER ERROR 2: Invalid char \"" << the_char << "\"";
             std::cout << " at line: " << lineNum << std::endl;
-            return Token(ERROR_TK, "Invalid ID", lineNum);
+            return Token(ERROR_TOKEN, "Invalid ID", lineNum);
         }
 
         else if (lookAhead == -1) {
-            return Token(EOF_TK, "EOF", lineNum);
+            return Token(EOF_TOKEN, "EOF", lineNum);
         }
         
         else if (lookAhead >= 100)
@@ -178,7 +178,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
             {
                 std::cout << "SCANNER ERROR 3: \"" << str << "\" is longer than 8 chars";
                 std::cout << " at line: " << lineNum << std::endl;
-                return Token(ERROR_TK, "Invalid Length", lineNum);
+                return Token(ERROR_TOKEN, "Invalid Length", lineNum);
             }
             if (the_char == '\n')
             {
@@ -189,7 +189,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
         }
     }
 
-    return Token(ERROR_TK, "Scanner Failed", lineNum);
+    return Token(ERROR_TOKEN, "Scanner Failed", lineNum);
 
 }
 
