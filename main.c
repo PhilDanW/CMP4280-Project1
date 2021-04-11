@@ -19,7 +19,8 @@ int errorIndex = 0;
 int main(int argc, char *argv[])
 {
     //define variables to help open file
-    char input[1000];
+	const int SIZE = 1000;
+    char input[SIZE];
     int line = 1;
     
     //create the FSA table that will store the states and tokens
@@ -28,15 +29,15 @@ int main(int argc, char *argv[])
     //Check if a file has been specified
     if(argc > 2) {
         fprintf(stderr, "Too many arguments given.\n");
-	printf("Use: \n%s\n%s <file>\n", argv[0], argv[0]);
+		printf("Use: \n%s\n%s <file>\n", argv[0], argv[0]);
         return 0;
     }
 	
     if (argc == 2) {
        	 
-	int size = 0;
-	size_t length = strlen(argv[1]);
-	FILE *file = fopen(strcat(argv[1], ".sp2021"), "r");    
+		int size = 0;
+		size_t length = strlen(argv[1]);
+		FILE *file = fopen(strcat(argv[1], ".sp2021"), "r");    
         argv[length] = '\0';
         
         tokens = (Token *) malloc(sizeof(Token));
@@ -51,12 +52,12 @@ int main(int argc, char *argv[])
 	    size = ftell(file);
 	    rewind(file);
 	    if(size == 0) {
-		fprintf(stderr, "Error: The File is Empty\n");
-		return 0;
+			fprintf(stderr, "Error: The File is Empty\n");
+			return 0;
 	    }
 	}
 	 
-	//get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
+		//get the strings from  the file one at a time, store them in an array, then pass that array to the mainDriver()
     	while(fgets(input, sizeof(input), file)) {
         	mainDriver(input, line);
         	line++;
@@ -67,9 +68,9 @@ int main(int argc, char *argv[])
     
     //if a file was not given, thenread from stdin
     if (argc == 1) {
-	printf("Type in input for scanner and press CTRL+D when finished\n");
+		printf("Type in input for scanner and press CTRL+D when finished\n");
         tokens = (Token *) malloc(sizeof(Token));
-	isError = 0;
+		isError = 0;
 	    
         int ch = getc(stdin);
         if (ch == EOF) {
@@ -97,8 +98,7 @@ int main(int argc, char *argv[])
 	
 	
     testScanner();
-    free(tokens);
-             
+    free(tokens);   
     return 0;
 }
     
