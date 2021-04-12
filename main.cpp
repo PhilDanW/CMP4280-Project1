@@ -4,62 +4,70 @@
 * main.c processes the command line arguments (a file) *
 * after opening the file it will call testScanner()    *
 *******************************************************/
-#include "scanner.h"
+#include <iostream>
 #include <string>
 #include <fstream>
-#include <iostream>
+#include "testScanner.h"
 
-int main(int argc, char *argv[])
-{
-	//file input in the command line
-	std::ifstream inputFile;
-	//name of the file given
-	std::string fname;
-	
-	//if appropriate args given, open the file for reading
-	if(argc == 2) {
-		fname = argv[1];
-		fname += ".sp2021";
-		
-		std::ofstream outputFile;
-		outputFile.open(fname, std::ios_base::app);
-		outputFile << " ";
-		std::cout << "stdin.temp" << std::endl;
-	}
-	//otherwise take input from the keyboard
-	else if (argc == 1) {
-		std::string keyboard;
-		std::ofstream temp;
-		fname = "stdin.temp";
-		
-		temp.open(fname, std::ios::trunc);
-		
-		std::string str = "";
-		std::cout << "Type you input here. Pressing \"Enter\" will represent EOF. Type CTRL+D to finish input" << std::endl;
-		
-		do{
-			getline(std::cin, keyboard);
-			temp << keyboard << "\n";
-		}while (!keyboard.empty());
-		
-		temp.close();
-	}
-	else {
-		std::cout << "You have entered too many arguments" << std::endl;
-		exit(EXIT_FAILURE);
-	}
-	
-	//open the file with the tokens for reading
-	inputFile.open(fname);
-	
-	//if the file is open, pass it to the testScanner()
-	if(inputFile) {
-		testScanner(inputFile);
-		inputFile.close();
-	}
-	else {
-		std::cout << "ERROR: Failed to open " << fname << std::endl;
-		exit(EXIT_FAILURE);
-	}
-	return 0;
+int main(int argc, char** argv) {
+    std::ifstream inFile;         // input file
+    std::string fileName;         // filename
+
+    // FILE GIVEN
+    if (argc == 2) {
+        fileName = argv[1];
+        fileName += ".fs";
+        
+        std::ofstream outfile;
+        outfile.open(fileName, std::ios_base::app);
+        outfile << " ";
+        std::cout << "stdin.temp" << std::endl;
+
+    
+    }
+
+    // USER INPUT
+    else if (argc == 1) {
+        std::string userInput;
+        std::ofstream tempFile;                 // TempFile for user input
+        fileName = "stdin.temp";
+
+        tempFile.open(fileName, std::ios::trunc); // trunc overwrites
+
+        std::string string = "";                // empty string for reading input
+
+        std::cout << "Pressing \"Enter\" on empty line will simulate EOF" << std::endl;
+
+        do {
+            std::cout << std::endl << "Keyboard Input: ";
+            getline(std::cin, userInput);   // read user input
+            tempFile << userInput << "\n";   // write input to temp file
+        } while (!userInput.empty());         // Pressing "Enter" on empty line will sim EOF
+
+        tempFile.close();                   // close file
+
+    }
+
+    //more than 1 argument quits
+    else {
+        std::cout << "Too many arguments given" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    inFile.open(fileName);
+    
+    // Scan file
+    if (inFile) {
+
+        testScanner(inFile);  //scan file with testScanner
+
+        inFile.close(); // close file
+
+    }
+    else {  // cannot open file
+    std::cout << "ERROR: Cannot open " << fileName << " for reading" << std::endl;
+
+    exit(EXIT_FAILURE);
+    }
+    return 0;
 }
