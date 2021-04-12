@@ -9,10 +9,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "testScanner.h"
+#include "scanner.h"
 
 int main(int argc, char** argv) {
-    std::ifstream inFile;         // input file
+    std::ifstream file;         // input file
     std::string fileName;         // filename
 
     //If no file is given then get input from the user
@@ -55,18 +55,33 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);
     }
 
-    inFile.open(fileName);
+    file.open(fileName);
     
     //If the file is open, scan its contents
-    if(!inFile) {
+    if(!file) {
         std::cout << "ERROR: Cannot open " << fileName << " for reading" << std::endl;
         exit(EXIT_FAILURE);
     }
     else {  // cannot open file
         //scan the file with testScanner
-        testScanner(inFile); 
+        unsigned int lineNum = 1;
+        do
+        {
+            // Scan in tokens from file
+            Token token = scanner(file, lineNum);
+            if (token.token_ID == ERROR_TK) {
+            exit(EXIT_FAILURE);
+            }
+            else {  // print token info to screen
+                std::cout << std::left;
+                std::cout << "Line Number: " << std::setw(3) << token.lineNum;
+                std::cout << "\tToken Type: " << std::setw(22) << tokens[token.token_ID];
+                std::cout << "\tToken Value: " << std::setw(10) << token.token_string << std::endl;
+            }
+
+        } while (file); 
         //close file
-        inFile.close();
+        file.close();
     }
     return 0;
 }
