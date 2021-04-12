@@ -12,43 +12,48 @@
 int main(int argc, char** argv) {
     std::ifstream inFile;         // input file
     std::string fileName;         // filename
-    int option = argc;
-    
-    switch(option) {
-        case 1:
-            std::string userInput;
-            std::ofstream tempFile;                 // TempFile for user input
-            fileName = "stdin.temp";
 
-            tempFile.open(fileName, std::ios::trunc); // trunc overwrites
-
-            std::string string = "";                // empty string for reading input
-
-            std::cout << "Pressing \"Enter\" on empty line will simulate EOF" << std::endl;
-
-            do {
-                std::cout << std::endl << "Keyboard Input: ";
-                getline(std::cin, userInput);   // read user input
-                tempFile << userInput << "\n";   // write input to temp file
-            } while (!userInput.empty());         // Pressing "Enter" on empty line will sim EOF
-
-            tempFile.close();                   // close file
-            break;
-        case 2:
-            fileName = argv[1];
-            fileName += ".fs";
+    // FILE GIVEN
+    if (argc == 2) {
+        fileName = argv[1];
+        fileName += ".fs";
         
-            std::ofstream outfile;
-            outfile.open(fileName, std::ios_base::app);
-            outfile << " ";
-            std::cout << "stdin.temp" << std::endl;
-            break;
-        case 3:
-            std::cout << "Too many arguments given" << std::endl;
-            exit(EXIT_FAILURE);
-            break;
-    }
+        std::ofstream outfile;
+        outfile.open(fileName, std::ios_base::app);
+        outfile << " ";
+        std::cout << "stdin.temp" << std::endl;
+
     
+    }
+
+    // USER INPUT
+    else if (argc == 1) {
+        std::string userInput;
+        std::ofstream tempFile;                 // TempFile for user input
+        fileName = "stdin.temp";
+
+        tempFile.open(fileName, std::ios::trunc); // trunc overwrites
+
+        std::string string = "";                // empty string for reading input
+
+        std::cout << "Pressing \"Enter\" on empty line will simulate EOF" << std::endl;
+
+        do {
+            std::cout << std::endl << "Keyboard Input: ";
+            getline(std::cin, userInput);   // read user input
+            tempFile << userInput << "\n";   // write input to temp file
+        } while (!userInput.empty());         // Pressing "Enter" on empty line will sim EOF
+
+        tempFile.close();                   // close file
+
+    }
+
+    //more than 1 argument quits
+    else {
+        std::cout << "Too many arguments given" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
     inFile.open(fileName);
     
     // Scan file
