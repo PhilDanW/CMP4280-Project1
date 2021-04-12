@@ -41,25 +41,22 @@ int fsa_table[23][23] = {   // [row] [col]   ws = whitespace, lc = lowercase, UC
     {121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121}  // 22 ]
 };
 
-
-
-
 // Map for Keywords
 std::map<std::string, tokens> keywords = {
-    {"begin", BEGIN_TK},
-    {"end", END_TK},
-    {"loop", LOOP_TK},
-    {"while", WHILE_TK},
-    {"void", VOID_TK},
-    {"exit", EXIT_TK},
-    {"getter", GETTER_TK},
-    {"outter", OUTTER_TK},
-    {"main", MAIN_TK},
-    {"if", IF_TK},
-    {"then", THEN_TK},
-    {"assign", ASSIGN_TK},
-    {"data", DATA_TK},
-    {"proc", PROC_TK}
+    {"begin", BEGIN},
+    {"end", END},
+    {"loop", LOOP},
+    {"while", WHILE},
+    {"void", VOID},
+    {"exit", EXIT},
+    {"getter", GETTER},
+    {"outter", OUTTER},
+    {"main", MAIN},
+    {"if", IF},
+    {"then", THEN},
+    {"assign", ASSIGN},
+    {"data", DATA},
+    {"proc", PROC}
 };
 
 // Map for symbols
@@ -86,29 +83,29 @@ std::map<char, int> symbols = {
 
 // Map for Operators and Delimiters
 std::map<int, tokens> endState = {
-    {100, ID_TK},
-    {101, INT_TK},
-    {-1, EOF_TK},
-    {102, EQUALS_TK},
-    {103, EQUALS_OR_GREAT_THAN_TK},
-    {104, EQUALS_OR_LESS_THAN_TK},
-    {105, EQUALS_EQUALS_TK},
-    {106, COLON_TK},
-    {107, COLON_EQUALS_TK},
-    {108, PLUS_TK},
-    {109, MINUS_TK},
-    {110, ASTERISK_TK},
-    {111, SLASH_TK},
-    {112, PERCENT_TK},
-    {113, PERIOD_TK},
-    {114, LEFT_PAREN_TK},
-    {115, RIGHT_PAREN_TK},
-    {116, COMMA_TK},
-    {117, LEFT_BRACE_TK},
-    {118, RIGHT_BRACE_TK},
-    {119, SEMI_COLON_TK},
-    {120, LEFT_BRACKET_TK},
-    {121, RIGHT_BRACKET_TK}
+    {100, IDENTIFIER},
+    {101, INT},
+    {-1, EOF},
+    {102, EQUALS},
+    {103, EQUALS_GREATER_THAN},
+    {104, EQUALS_LESS_THAN},
+    {105, EQUALS_EQUALS},
+    {106, COLON},
+    {107, COLON_EQUALS},
+    {108, ADD},
+    {109, SUBTRACT},
+    {110, ASTERISK},
+    {111, DIVIDE},
+    {112, MODULUS},
+    {113, PERIOD},
+    {114, LEFT_PARENT},
+    {115, RIGHT_PARENT},
+    {116, COMMA},
+    {117, LEFT_BRACE},
+    {118, RIGHT_BRACE},
+    {119, SEMICOLON},
+    {120, LEFT_BRACKET},
+    {121, RIGHT_BRACKET}
 };
 
 
