@@ -1,16 +1,17 @@
 #ifndef SCANNER_H
 #define SCANNER_H
-
 #include "token.h"
-#include <fstream>
-#include <map>
 #include <string>
+#include <map>
+#include <fstream>
 
-void testScanner(std::ifstream& file);
-Token scanner(std::ifstream& in_file, int& lineNum);
+// scanner
+Token scanner(std::ifstream& in_file,unsigned int& lineNum);
 
-int getColumn(char the_char);
-Token setToken(int state, std::string word, int lineNum);
-void tokenInfo(Token token);
+// finds col of char in FSA table
+int setFSAcol(char current_char);
+
+// sets token
+Token setToken(int state, std::string word, unsigned int lineNum);
 
 #endif
