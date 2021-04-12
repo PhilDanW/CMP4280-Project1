@@ -1,3 +1,11 @@
+/***********************************************************
+* Author: Philip Wright                                    *
+* Project 1: Scanner                                       *
+* testScanner.cpp defines the names of all possible tokens *
+* and accepts the file pointer from main.cpp. In turn it   *
+* passes it to scanner.cpp and then prints the returned    *
+* info to the screen.                                      *
+***********************************************************/
 #include "testScanner.h"
 #include "scanner.h"
 #include <iostream>
