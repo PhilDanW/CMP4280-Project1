@@ -4,57 +4,59 @@
 #include <string>
 
 enum tokens {
-    BEGIN_TOKEN,                 
-    END_TOKEN,                   
-    LOOP_TOKEN,                  
-    WHILE_TOKEN,                 
-    VOID_TOKEN,                  
-    EXIT_TOKEN,                  
-    GETTER_TOKEN,               
-    OUTTER_TOKEN,                
-    MAIN_TOKEN,                  
-    IF_TOKEN,                   
-    THEN_TOKEN,                  
-    ASSIGN_TOKEN,               
-    DATA_TOKEN,               
-    PROC_TOKEN,                  
-    EQUAL_TOKEN,                
-    EQUAL_LESS_THAN_TOKEN,   
-    EQUAL_GREATER_THAN_TOKEN,  
-    EQUAL_EQUAL_TOKEN,         
-    COLON_TOKEN,                 
-    COLON_EQUAL_TOKEN,          
-    ADD_TOKEN,                  
-    SUBTRACT_TOKEN,                 
-    ASTERISK_TOKEN,              
-    DIVIDE_TOKEN,                 
-    MODULUS_TOKEN,               
-    PERIOD_TOKEN,                
-    LEFT_PARENT_TOKEN,            
-    RIGHT_PARENT_TOKEN,           
-    COMMA_TOKEN,                 
-    LEFT_BRACE_TOKEN,            
-    RIGHT_BRACE_TOKEN,           
-    SEMICOLON_TOKEN,            
-    LEFT_BRACKET_TOKEN,         
-    RIGHT_BRACKET_TOKEN,         
-    ID_TOKEN,                    
-    INT_TOKEN,                   
-    EOF_TOKEN,                   
-    ERROR_TOKEN                  
-} TokenType;
+    BEGIN_TK,                 // 0
+    END_TK,                   // 1
+    LOOP_TK,                  // 2
+    WHILE_TK,                 // 3
+    VOID_TK,                  // 4
+    EXIT_TK,                  // 5
+    GETTER_TK,                // 6
+    OUTTER_TK,                // 7
+    MAIN_TK,                  // 8
+    IF_TK,                    // 9
+    THEN_TK,                  // 10
+    ASSIGN_TK,                // 11
+    DATA_TK,                  // 12
+    PROC_TK,                  // 13
+    EQUALS_TK,                // 14
+    EQUALS_OR_LESS_THAN_TK,   // 15
+    EQUALS_OR_GREAT_THAN_TK,  // 16
+    EQUALS_EQUALS_TK,         // 17
+    COLON_TK,                 // 18
+    COLON_EQUALS_TK,          // 19
+    PLUS_TK,                  // 20
+    MINUS_TK,                 // 21
+    ASTERISK_TK,              // 22
+    SLASH_TK,                 // 23
+    PERCENT_TK,               // 24
+    PERIOD_TK,                // 25
+    LEFT_PAREN_TK,            // 26
+    RIGHT_PAREN_TK,           // 27
+    COMMA_TK,                 // 28
+    LEFT_BRACE_TK,            // 29
+    RIGHT_BRACE_TK,           // 30
+    SEMI_COLON_TK,            // 31
+    LEFT_BRACKET_TK,          // 32
+    RIGHT_BRACKET_TK,         // 33
+    ID_TK,                    // 34
+    INT_TK,                   // 35
+    EOF_TK,                   // 36
+    ERROR_TK                  // 37
+};
 
-struct Token{
-	int lineNum;
-	tokens tokenID;
-	std::string tokenString;
-	
-	Token(tokens ID, std::string string, int lineNum)
-	{
-		this->lineNum = lineNum;
-		this->tokenID = ID;
-		this->tokenString = string;
-	}
+struct Token {
+    unsigned int lineNum;      // line number
+    tokens token_ID;           // token ID
+    std::string token_string;  // string of token
+
+    
+    // Assign token info
+    Token(tokens ID, std::string string, unsigned int lineNum)
+    {   
+        this->lineNum = lineNum;
+        this->token_ID = ID;
+        this->token_string = string;
+    }
 };
 
 #endif
