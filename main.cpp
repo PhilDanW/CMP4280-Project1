@@ -16,7 +16,7 @@ std::string tokens[] = {"BEGIN","END","LOOP","WHILE", "VOID", "EXIT", "GETTER", 
                         "EQUALS_GREATER_THAN", "EQUALS_EQUALS", "COLON", "COLON_EQUALS", "ADD", "SUBTRACT", 
                         "ASTERISK", "DIVIDE", "MODULUS", "PERIOD", "LEFT_PARENT", "RIGHT_PARENT", "COMMA", 
                         "LEFT_BRACE", "RIGHT_BRACE", "SEMICOLON", "LEFT_BRACKET", "RIGHT_BRACKET", "IDENTIFIER", 
-                        "INT", "EOF", "ERROR"
+                        "INT", "EOF_TOKEN", "ERROR"
 };
 
 int main(int argc, char** argv) {
