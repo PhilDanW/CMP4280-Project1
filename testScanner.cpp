@@ -32,7 +32,7 @@ void testScanner(std::ifstream& file) {
 
 void printTokenInfo(Token token){
     std::cout << std::left;
-    std::cout << "Line: " << std::setw(3) << token.lineNum;
-    std::cout << "\tType: " << std::setw(22) << tokens[token.token_ID];
-    std::cout << "\tToken: " << std::setw(10) << token.token_string << std::endl;
+    std::cout << "Line Number: " << std::setw(3) << token.lineNum;
+    std::cout << "\tToken Type: " << std::setw(22) << tokens[token.token_ID];
+    std::cout << "\tToken Value: " << std::setw(10) << token.token_string << std::endl;
 }
