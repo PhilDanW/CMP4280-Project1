@@ -85,7 +85,7 @@ std::map<char, int> symbols = {
 std::map<int, tokens> endState = {
     {100, IDENTIFIER},
     {101, INT},
-    {-1, EOF},
+    {-1, EOF_TOKEN},
     {102, EQUALS},
     {103, EQUALS_GREATER_THAN},
     {104, EQUALS_LESS_THAN},
@@ -171,7 +171,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
         }
 
         else if (lookAhead == -1) {
-            return Token(EOF, "EOF", lineNum);
+            return Token(EOF_TOKEN, "EOF", lineNum);
         }
         
         else if (lookAhead >= 100)
