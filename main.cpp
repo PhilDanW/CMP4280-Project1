@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 #include "scanner.h"
 
 std::string tokens[] = {"BEGIN_KEYWORD","END_KEYWORD","LOOP_KEYWORD","WHILE_KEYWORD", "VOID_KEYWORD", "EXIT_KEYWORD", 
