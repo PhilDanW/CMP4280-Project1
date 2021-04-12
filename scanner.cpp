@@ -43,20 +43,20 @@ int fsa_table[23][23] = {   // [row] [col]   ws = whitespace, lc = lowercase, UC
 
 // Map for Keywords
 std::map<std::string, tokens> keywords = {
-    {"begin", BEGIN},
-    {"end", END},
-    {"loop", LOOP},
-    {"while", WHILE},
-    {"void", VOID},
-    {"exit", EXIT},
-    {"getter", GETTER},
-    {"outter", OUTTER},
-    {"main", MAIN},
-    {"if", IF},
-    {"then", THEN},
-    {"assign", ASSIGN},
-    {"data", DATA},
-    {"proc", PROC}
+    {"begin", BEGIN_KEYWORD},
+    {"end", END_KEYWORD},
+    {"loop", LOOP_KEYWORD},
+    {"while", WHILE_KEYWORD},
+    {"void", VOID_KEYWORD},
+    {"exit", EXIT_KEYWORD},
+    {"getter", GETTER_KEYWORD},
+    {"outter", OUTTER_KEYWORD},
+    {"main", MAIN_KEYWORD},
+    {"if", IF_KEYWORD},
+    {"then", THEN_KEYWORD},
+    {"assign", ASSIGN_KEYWORD},
+    {"data", DATA_KEYWORD},
+    {"proc", PROC_KEYWORD}
 };
 
 // Map for symbols
@@ -84,28 +84,28 @@ std::map<char, int> symbols = {
 // Map for Operators and Delimiters
 std::map<int, tokens> endState = {
     {100, IDENTIFIER},
-    {101, INT},
+    {101, INTEGER},
     {-1, EOF_TOKEN},
-    {102, EQUALS},
-    {103, EQUALS_GREATER_THAN},
-    {104, EQUALS_LESS_THAN},
-    {105, EQUALS_EQUALS},
-    {106, COLON},
-    {107, COLON_EQUALS},
-    {108, ADD},
-    {109, SUBTRACT},
-    {110, ASTERISK},
-    {111, DIVIDE},
-    {112, MODULUS},
-    {113, PERIOD},
-    {114, LEFT_PARENT},
-    {115, RIGHT_PARENT},
-    {116, COMMA},
-    {117, LEFT_BRACE},
-    {118, RIGHT_BRACE},
-    {119, SEMICOLON},
-    {120, LEFT_BRACKET},
-    {121, RIGHT_BRACKET}
+    {102, EQUALS_OPERATOR},
+    {103, EQUALS_GREATER_OPERATOR},
+    {104, EQUALS_LESS_OPERATOR},
+    {105, EQUALS_EQUALS_OPERATOR},
+    {106, COLON_OPERATOR},
+    {107, COLON_EQUALS_OPERATOR},
+    {108, ADD_OPERATOR},
+    {109, SUBTRACT_OPERATOR},
+    {110, ASTERISK_OPERATOR},
+    {111, DIVIDE_OPERATOR},
+    {112, MODULUS_OPERATOR},
+    {113, PERIOD_OPERATOR},
+    {114, LEFT_PARENT_DELIM},
+    {115, RIGHT_PARENT_DELIM},
+    {116, COMMA_DELIM},
+    {117, LEFT_BRACE_DELIM},
+    {118, RIGHT_BRACE_DELIM},
+    {119, SEMICOLON_DELIM},
+    {120, LEFT_BRACKET_DELIM},
+    {121, RIGHT_BRACKET_DELIM}
 };
 
 
