@@ -1,3 +1,8 @@
+/***********************************************************
+* Author: Philip Wright                                    *
+* Project 1: Scanner                                       *
+* scanner.h holds function definitions for scanner.cpp     *
+***********************************************************/
 #ifndef SCANNER_H
 #define SCANNER_H
 #include "token.h"
