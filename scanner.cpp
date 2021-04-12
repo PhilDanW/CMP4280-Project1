@@ -193,7 +193,7 @@ Token scanner(std::ifstream& in_file, int& lineNum){
 
 }
 
-int setFSAcol(char the_char){
+int getColumn(char the_char){
     
     if (the_char == EOF)
         return 22;
