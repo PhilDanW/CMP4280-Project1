@@ -4,7 +4,7 @@
 * main.c processes the command line arguments (a file) *
 * after opening the file it will call testScanner()    *
 *******************************************************/
-#include "testScanner.h"
+#include "scanner.h"
 #include <string>
 #include <fstream>
 #include <iostream>
