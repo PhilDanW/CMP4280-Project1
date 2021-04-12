@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
  
         std::cout << "Pressing \"Enter\" is the same as EOF" << std::endl;
         do {
-            std::cout << std::endl << "Type your input here: ";
+            std::cout << std::endl << "Type your input here: \n";
             //get keyboard input from the user
             getline(std::cin, userInput);
             //put that input into a temporary file so that it can be used by the scanner
