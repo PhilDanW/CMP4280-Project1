@@ -1,8 +1,10 @@
-/************************
-* Author: Philip Wright *
-* Project 1: Scanner    *
-* scanner.c loops through the FSA table and begins storing *
-* tokens in the token struct                               *
+/***********************************************************
+* Author: Philip Wright                                    *
+* Project 1: Scanner                                       *
+* scanner.c loops is passed the file from testScanner.cpp  *
+* and defines the FSA table, keywords, symbols and         *
+* possible end states of the given tokens. and begins      *
+* storing tokens in the token struct                       *
 ***********************************************************/
 
 #include "scanner.h"
@@ -110,46 +112,51 @@ std::map<int, tokens> endState = {
 
 // scanner for token
 Token scanner(std::ifstream& in_file, unsigned int& lineNum){
-    int state = 0;           // initialize state       
-    int lookAhead = 0;       // initialize lookahead
-    char currentChar = ' ';  // empty char for reading char    
-    std::string word = "";   // placeholder for building string
+    // initialize state, lookahead, empty char for reading char, and placeholder for building string
+    int state = 0;                  
+    int lookAhead = 0;        
+    char currentChar = ' ';       
+    std::string word = "";    
     
-    while (state < 100){           // loop until end state is hit
+    // loop until end state is hit
+    while (state < 100){    
+        //get the first char from the file
         in_file.get(currentChar);
         
-        // Skips comments 
+        //If it is a $, check to see if it is followed by a $ 
         if (currentChar == '$'){
             in_file.get(currentChar);
-            if (currentChar == '$') {              // Find $$
+            //if $$ is given, skip this line its a comment
+            if (currentChar == '$') {              
                 in_file.get(currentChar);
-                while (1) {                        // loop until break
+                // loop until break
+                while (1) {                        
                     in_file.get(currentChar);
                     if (in_file.eof()) {
                         std::cout << "SCANNER ERROR: Comment not closed, EOF reached at line: " << lineNum << std::endl;   // in case comment is never closed
                         return Token(ERROR_TK, "No end to comment", lineNum);
                     }
+                    //check to see if the comment got closed as well
                     if (currentChar == '$') {
                         in_file.get(currentChar);  
                         if (currentChar == '$') {
-                            in_file.get(currentChar);  // Find $$
+                            in_file.get(currentChar);
                             break;
                         }
                     }
                 }
             }        
         }
-        
-        int colFSA = setFSAcol(currentChar);   // find the colomn of char
-        
-        if (in_file.eof()){   //EOF
+        // find the colomn of char
+        int colFSA = setFSAcol(currentChar);   
+        //EOF
+        if (in_file.eof()){   
             colFSA = 22;
         }
-
-        if (colFSA == 23)   // error
+        // error
+        if (colFSA == 23)   
         {
-
-            std::cout << "SCANNER ERROR: Invalid character \'" << currentChar << "\'";
+            std::cout << "SCANNER ERROR: Invalid character detected: \'" << currentChar << "\'";
             std::cout << " at line: " << lineNum << std::endl;
 
             return Token(ERROR_TK, "Invalid char", lineNum);
@@ -158,7 +165,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
         lookAhead = fsa_table[state][colFSA];
 
         if (lookAhead == 23) {                  // error
-            std::cout << "SCANNER ERROR 2: Invalid char \"" << currentChar << "\"";
+            std::cout << "SCANNER ERROR 2: Invalid character detected: \"" << currentChar << "\"";
             std::cout << " at line: " << lineNum << std::endl;
             return Token(ERROR_TK, "Invalid ID", lineNum);
         }
@@ -180,9 +187,10 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
                 word += currentChar;
             }
 
-            if (word.length() >= 9)                 // largest indiifier can be 8 chars long
+            //check to make sure the identifier isn't over 8 characters
+            if (word.length() >= 9)
             {
-                std::cout << "SCANNER ERROR 3: \"" << word << "\" is longer than 8 chars";
+                std::cout << "SCANNER ERROR 3: \"" << word << "\" is longer than 8 characters";
                 std::cout << " at line: " << lineNum << std::endl;
                 return Token(ERROR_TK, "Invalid Length", lineNum);
             }
@@ -195,11 +203,11 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
         }
     }
 
-    return Token(ERROR_TK, "Scanner Failed", lineNum);
+    return Token(ERROR_TK, "Scanner failed to complete", lineNum);
 
 }
 
-// finds the colomn of the char
+//finds the colomn of the character
 int setFSAcol(char currentChar){
     
     if (currentChar == EOF)
@@ -227,7 +235,7 @@ int setFSAcol(char currentChar){
     return 23;  // Leads to error state
 }
 
-// sets the type of token
+//sets the type of token
 Token setToken(int state, std::string word, unsigned int lineNum){
     // keywords
     if (keywords.find(word) != keywords.end()) {
