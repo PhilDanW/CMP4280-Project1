@@ -134,7 +134,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
                     in_file.get(currentChar);
                     if (in_file.eof()) {
                         std::cout << "SCANNER ERROR: Comment not closed, EOF reached at line: " << lineNum << std::endl;   // in case comment is never closed
-                        return Token(ERROR_TK, "No end to comment", lineNum);
+                        return Token(ERROR, "No end to comment", lineNum);
                     }
                     //check to see if the comment got closed as well
                     if (currentChar == '$') {
@@ -159,7 +159,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
             std::cout << "SCANNER ERROR: Invalid character detected: \'" << currentChar << "\'";
             std::cout << " at line: " << lineNum << std::endl;
 
-            return Token(ERROR_TK, "Invalid char", lineNum);
+            return Token(ERROR, "Invalid char", lineNum);
         }
 
         lookAhead = fsa_table[state][colFSA];
@@ -167,11 +167,11 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
         if (lookAhead == 23) {                  // error
             std::cout << "SCANNER ERROR 2: Invalid character detected: \"" << currentChar << "\"";
             std::cout << " at line: " << lineNum << std::endl;
-            return Token(ERROR_TK, "Invalid ID", lineNum);
+            return Token(ERROR, "Invalid ID", lineNum);
         }
 
         else if (lookAhead == -1) {
-            return Token(EOF_TK, "EOF", lineNum);
+            return Token(EOF, "EOF", lineNum);
         }
         
         else if (lookAhead >= 100)
@@ -192,7 +192,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
             {
                 std::cout << "SCANNER ERROR 3: \"" << word << "\" is longer than 8 characters";
                 std::cout << " at line: " << lineNum << std::endl;
-                return Token(ERROR_TK, "Invalid Length", lineNum);
+                return Token(ERROR, "Invalid Length", lineNum);
             }
             if (currentChar == '\n')
             {
@@ -203,7 +203,7 @@ Token scanner(std::ifstream& in_file, unsigned int& lineNum){
         }
     }
 
-    return Token(ERROR_TK, "Scanner failed to complete", lineNum);
+    return Token(ERROR, "Scanner failed to complete", lineNum);
 
 }
 
