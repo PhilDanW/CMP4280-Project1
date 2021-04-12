@@ -11,12 +11,14 @@
 #include <fstream>
 #include "scanner.h"
 
-std::string tokens[] = {"BEGIN","END","LOOP","WHILE", "VOID", "EXIT", "GETTER", "OUTTER", "MAIN", 
-                        "IF", "THEN", "ASSIGN", "DATA", "PROC", "EQUALS", "EQUALS_LESS_THAN", 
-                        "EQUALS_GREATER_THAN", "EQUALS_EQUALS", "COLON", "COLON_EQUALS", "ADD", "SUBTRACT", 
-                        "ASTERISK", "DIVIDE", "MODULUS", "PERIOD", "LEFT_PARENT", "RIGHT_PARENT", "COMMA", 
-                        "LEFT_BRACE", "RIGHT_BRACE", "SEMICOLON", "LEFT_BRACKET", "RIGHT_BRACKET", "IDENTIFIER", 
-                        "INT", "EOF_TOKEN", "ERROR"
+std::string tokens[] = {"BEGIN_KEYWORD","END_KEYWORD","LOOP_KEYWORD","WHILE_KEYWORD", "VOID_KEYWORD", "EXIT_KEYWORD", 
+                        "GETTER_KEYWORD", "OUTTER_KEYWORD", "MAIN_KEYWORD", "IF_KEYWORD", "THEN_KEYWORD", "ASSIGN_KEYWORD", 
+                        "DATA_KEYWORD", "PROC_KEYWORD", "EQUALS_OPERATOR", "EQUALS_LESS_OPERATOR", 
+                        "EQUALS_GREATER_OPERATOR", "EQUALS_EQUALS_OPERATOR", "COLON_OPERATOR", "COLON_EQUALS_OPERATOR",
+                        "ADD_OPERATOR", "SUBTRACT_OPERATOR", "ASTERISK_OPERATOR", "DIVIDE_OPERATOR", "MODULUS_OPERATOR", 
+                        "PERIOD_OPERATOR", "LEFT_PARENT_DELIM", "RIGHT_PARENT_DELIM", "COMMA_DELIM", "LEFT_BRACE_DELIM", 
+                        "RIGHT_BRACE_DELIM", "SEMICOLON_DELIM", "LEFT_BRACKET_DELIM", "RIGHT_BRACKET_DELIM", "IDENTIFIER", 
+                        "INTEGER", "EOF_TOKEN", "ERROR"
 };
 
 int main(int argc, char** argv) {
