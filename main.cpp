@@ -14,20 +14,7 @@ int main(int argc, char** argv) {
     std::string fileName;         // filename
 
     // FILE GIVEN
-    if (argc == 2) {
-        fileName = argv[1];
-        fileName += ".fs";
-        
-        std::ofstream outfile;
-        outfile.open(fileName, std::ios_base::app);
-        outfile << " ";
-        std::cout << "stdin.temp" << std::endl;
-
-    
-    }
-
-    // USER INPUT
-    else if (argc == 1) {
+    if (argc == 1) {
         std::string userInput;
         std::ofstream tempFile;                 // TempFile for user input
         fileName = "stdin.temp";
@@ -46,8 +33,20 @@ int main(int argc, char** argv) {
 
         tempFile.close();                   // close file
 
+    
     }
 
+    // USER INPUT
+    else if (argc == 2) {
+        fileName = argv[1];
+        fileName += ".fs";
+        
+        std::ofstream outfile;
+        outfile.open(fileName, std::ios_base::app);
+        outfile << " ";
+        std::cout << "stdin.temp" << std::endl;
+
+    }
     //more than 1 argument quits
     else {
         std::cout << "Too many arguments given" << std::endl;
@@ -57,15 +56,12 @@ int main(int argc, char** argv) {
     inFile.open(fileName);
     
     // Scan file
-    if (inFile) {
-
-        testScanner(inFile);  //scan file with testScanner
-
-        inFile.close(); // close file
-
+    if(!inFile) {
+        std::cout << "ERROR: Cannot open " << fileName << " for reading" << std::endl;
     }
     else {  // cannot open file
-    std::cout << "ERROR: Cannot open " << fileName << " for reading" << std::endl;
+        testScanner(inFile);  //scan file with testScanner
+        inFile.close(); // close file
 
     exit(EXIT_FAILURE);
     }
