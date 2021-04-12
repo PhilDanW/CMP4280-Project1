@@ -1,7 +1,7 @@
 /***********************************************************
 * Author: Philip Wright                                    *
 * Project 1: Scanner                                       *
-* scanner.c loops is passed the file from testScanner.cpp  *
+* scanner.cpp loops is passed the file from testScanner.cpp*
 * and defines the FSA table, keywords, symbols and         *
 * possible end states of the given tokens. and begins      *
 * storing tokens in the token struct                       *
