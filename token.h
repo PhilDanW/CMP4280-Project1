@@ -1,3 +1,9 @@
+/***********************************************************
+* Author: Philip Wright                                    *
+* Project 1: Scanner                                       *
+* token.h creates an enumeration for all the types of      *
+* tokens allowed while also setting up the Token struct    * 
+***********************************************************/
 #ifndef TOKEN_H
 #define TOKEN_H
 
